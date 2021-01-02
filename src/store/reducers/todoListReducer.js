@@ -1,4 +1,4 @@
-import { addTodo, deleteTodo } from '../actions'
+import { addTodo, deleteTodo, changeIsCompleted } from '../actions'
 
 const initialState = {todos: [], newId: 0}
 
@@ -8,7 +8,8 @@ const todoListReducer = (state = initialState, action) => {
             return {
                 todos: [...state.todos, {
                     value: action.payload,
-                    id: state.newId
+                    id: state.newId,
+                    isCompleted: false
                 }],
                 newId: state.newId+1
             }
@@ -17,6 +18,17 @@ const todoListReducer = (state = initialState, action) => {
                 ...state,
                 todos: state.todos.filter((el) => el.id !== action.id),
             }
+        case changeIsCompleted:
+            state.todos.map((item) => {
+                if(item.id === action.id){
+                    item.isCompleted = !item.isCompleted
+                    return {
+                        ...state
+                    }
+                }
+                return item
+            })
+            return state
         default:
             return state
     }

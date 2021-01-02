@@ -6,7 +6,7 @@ const TodoList = ({text, test, todos}) => {
     return(
         <div className="todoList">
             {todos.map(todo => (
-                <Todo value={todo.value} key={todo.id} id={todo.id} />
+                <Todo value={todo.value} key={todo.id} id={todo.id} isCompleted={todo.isCompleted} />
             ))}
 
             {/* <p>{text}</p>
