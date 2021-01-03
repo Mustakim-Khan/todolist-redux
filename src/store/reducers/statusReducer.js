@@ -1,11 +1,10 @@
 import { statusChange } from "../actions"
 
-const initialState = { value: 'all', filteredTodos: []}
+const initialState = { value: 'all'}
 
 const statusReducer = (state = initialState, action) => {
     switch(action.type){
         case statusChange:
-            // if(action.status === 'completed')
             return {
                 ...state,
                 value: action.status
