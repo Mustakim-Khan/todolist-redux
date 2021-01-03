@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Todo from './Todo'
 
-const TodoList = ({text, test, todos}) => {
+const TodoList = ({todos}) => {
     return(
         <div className="todoList">
             {todos.map(todo => (

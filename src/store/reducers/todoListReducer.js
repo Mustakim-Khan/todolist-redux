@@ -19,16 +19,13 @@ const todoListReducer = (state = initialState, action) => {
                 todos: state.todos.filter((el) => el.id !== action.id),
             }
         case changeIsCompleted:
-            state.todos.map((item) => {
+            const todos = state.todos.map((item) => {
                 if(item.id === action.id){
                     item.isCompleted = !item.isCompleted
-                    return {
-                        ...state
-                    }
                 }
                 return item
             })
-            return state
+            return {todos, newId: state.newId}
         default:
             return state
     }
